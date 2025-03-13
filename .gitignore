@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 .windsurfrules
+
+.DS_Store

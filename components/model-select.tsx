@@ -16,7 +16,7 @@ import {
 } from "./ui/select";
 import { ProviderTiming } from "@/lib/image-types";
 
-import { ImageDisplay } from "./ImageDisplay";
+import { ImageDisplay } from "./image-display";
 import Link from "next/link";
 
 interface ModelSelectProps {

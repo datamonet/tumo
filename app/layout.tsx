@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Takin Image Studio",
-  description: "An open-source AI image generator by Takin.ai",
+  title: "TUMO",
+  description: "An open-source AI media generator by Takin.ai",
 };
 
 export default function RootLayout({

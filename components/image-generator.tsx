@@ -6,8 +6,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { ImageDisplay } from "./ImageDisplay";
-import { ImageCarousel } from "@/components/ImageCarousel";
+import { ImageDisplay } from "./image-display";
+import { ImageCarousel } from "@/components/image-carousel";
 import { GeneratedImage, ImageError, ProviderTiming } from "@/lib/image-types";
 import {
   PROVIDER_ORDER,

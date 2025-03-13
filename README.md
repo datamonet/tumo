@@ -1,13 +1,13 @@
 # About
 
-Image generation studio by takin.ai
+Tumo – Open-source AI media generation via API, supporting Replicate, OpenAI, and more. 🚀
 
 ## Running Locally
 
 1. Clone the repository and install dependencies:
    ```bash
-   git clone https://github.com/datamonet/takin-image-studio
-   cd takin-image-studio
+   git clone https://github.com/datamonet/tumo
+   cd tumo
    pnpm install
    ```
 

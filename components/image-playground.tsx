@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ModelSelect } from "@/components/ModelSelect";
-import { PromptInput } from "@/components/PromptInput";
-import { ModelCardCarousel } from "@/components/ModelCardCarousel";
+import { ModelSelect } from "@/components/model-select";
+import { PromptInput } from "@/components/prompt-input";
+import { ModelCardCarousel } from "@/components/model-card-carousel";
 import {
   MODEL_CONFIGS,
   PROVIDERS,
@@ -14,7 +14,7 @@ import {
 } from "@/lib/provider-config";
 import { Suggestion } from "@/lib/suggestions";
 import { useImageGeneration } from "@/hooks/use-image-generation";
-import { Header } from "./Header";
+import { Header } from "./header";
 
 export function ImagePlayground({
   suggestions,

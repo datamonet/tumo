@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ImageDisplay } from "./ImageDisplay";
+import { ImageDisplay } from "./image-display";
 import { cn } from "@/lib/utils";
 import { ProviderKey } from "@/lib/provider-config";
 import { GeneratedImage, ProviderTiming } from "@/lib/image-types";

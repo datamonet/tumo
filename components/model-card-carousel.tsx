@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ModelSelect } from "./ModelSelect";
+import { ModelSelect } from "./model-select";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { ProviderKey } from "@/lib/provider-config";

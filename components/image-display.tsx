@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Download, ImageIcon, AlertCircle, Share } from "lucide-react";
-import { Stopwatch } from "./Stopwatch";
+import { Stopwatch } from "./stopwatch";
 import { cn } from "@/lib/utils";
 import { imageHelpers } from "@/lib/image-helpers";
 import { ProviderTiming } from "@/lib/image-types";
