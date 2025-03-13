@@ -1,13 +1,9 @@
-import { Copy } from 'lucide-react'
+import { Copy } from "lucide-react";
 
-import { Button } from '@/registry/new-york/ui/button'
-import { Input } from '@/registry/new-york/ui/input'
-import { Label } from '@/registry/new-york/ui/label'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/registry/new-york/ui/popover'
+import { Button } from "@/registry/new-york/ui/button";
+import { Input } from "@/registry/new-york/ui/input";
+import { Label } from "@/registry/new-york/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/new-york/ui/popover";
 
 export function PresetShare() {
   return (
@@ -19,8 +15,7 @@ export function PresetShare() {
         <div className="flex flex-col space-y-2 text-center sm:text-left">
           <h3 className="text-lg font-semibold">Share preset</h3>
           <p className="text-sm text-muted-foreground">
-            Anyone who has this link and an OpenAI account will be able to view
-            this.
+            Anyone who has this link and an OpenAI account will be able to view this.
           </p>
         </div>
         <div className="flex items-center space-x-2 pt-4">
@@ -42,5 +37,5 @@ export function PresetShare() {
         </div>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

@@ -16,10 +16,7 @@ export const imageHelpers = {
     return `${provider}-${uniqueId}`.replace(/[^a-z0-9-]/gi, "");
   },
 
-  shareOrDownload: async (
-    imageData: string,
-    provider: string
-  ): Promise<void> => {
+  shareOrDownload: async (imageData: string, provider: string): Promise<void> => {
     const fileName = imageHelpers.generateImageFileName(provider);
     const blob = imageHelpers.base64ToBlob(imageData);
     const file = new File([blob], `${fileName}.png`, { type: "image/png" });

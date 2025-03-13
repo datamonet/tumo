@@ -1,33 +1,31 @@
-'use client'
+"use client";
 
-import { Button } from '@/registry/new-york/ui/button'
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
-import { Input } from '@/registry/new-york/ui/input'
-import { Label } from '@/registry/new-york/ui/label'
+  CardTitle,
+} from "@/registry/new-york/ui/card";
+import { Input } from "@/registry/new-york/ui/input";
+import { Label } from "@/registry/new-york/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/registry/new-york/ui/select'
-import { Textarea } from '@/registry/new-york/ui/textarea'
+  SelectValue,
+} from "@/registry/new-york/ui/select";
+import { Textarea } from "@/registry/new-york/ui/textarea";
 
 export function DemoReportAnIssue() {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Report an issue</CardTitle>
-        <CardDescription>
-          What area are you having problems with?
-        </CardDescription>
+        <CardDescription>What area are you having problems with?</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="grid grid-cols-2 gap-4">
@@ -49,10 +47,7 @@ export function DemoReportAnIssue() {
           <div className="grid gap-2">
             <Label htmlFor="security-level">Security Level</Label>
             <Select defaultValue="2">
-              <SelectTrigger
-                id="security-level"
-                className="line-clamp-1 w-[160px] truncate"
-              >
+              <SelectTrigger id="security-level" className="line-clamp-1 w-[160px] truncate">
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>
               <SelectContent>
@@ -81,5 +76,5 @@ export function DemoReportAnIssue() {
         <Button>Submit</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

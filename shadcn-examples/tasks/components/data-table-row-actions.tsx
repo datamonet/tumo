@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { Row } from '@tanstack/react-table'
-import { MoreHorizontal } from 'lucide-react'
+import { Row } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
 
-import { Button } from '@/registry/new-york/ui/button'
+import { Button } from "@/registry/new-york/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,28 +15,23 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger
-} from '@/registry/new-york/ui/dropdown-menu'
+  DropdownMenuTrigger,
+} from "@/registry/new-york/ui/dropdown-menu";
 
-import { labels } from '../data/data'
-import { taskSchema } from '../data/schema'
+import { labels } from "../data/data";
+import { taskSchema } from "../data/schema";
 
 type DataTableRowActionsProps<TData> = {
-  row: Row<TData>
-}
+  row: Row<TData>;
+};
 
-export function DataTableRowActions<TData>({
-  row
-}: DataTableRowActionsProps<TData>) {
-  const task = taskSchema.parse(row.original)
+export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
+  const task = taskSchema.parse(row.original);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-        >
+        <Button variant="ghost" className="flex h-8 w-8 p-0 data-[state=open]:bg-muted">
           <MoreHorizontal />
           <span className="sr-only">Open menu</span>
         </Button>
@@ -65,5 +60,5 @@ export function DataTableRowActions<TData>({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

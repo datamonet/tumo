@@ -12,8 +12,7 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Sultry Chicken",
-    prompt:
-      "A sultry chicken peering around the corner from shadows, clearly up to no good",
+    prompt: "A sultry chicken peering around the corner from shadows, clearly up to no good",
   },
   {
     text: "Cat Vercel",
@@ -39,8 +38,7 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Macaw Love",
-    prompt:
-      "A colorful macaw delivering a love letter, flying over the Grand Canyon at sunrise",
+    prompt: "A colorful macaw delivering a love letter, flying over the Grand Canyon at sunrise",
   },
   {
     text: "Fox Painting",
@@ -48,8 +46,7 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Armadillo Aerospace",
-    prompt:
-      "An armadillo in a rocket at countdown preparing to blast off to Mars",
+    prompt: "An armadillo in a rocket at countdown preparing to blast off to Mars",
   },
   {
     text: "Penguin Delight",
@@ -72,18 +69,15 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Dolphin Glow",
-    prompt:
-      "A dolphin leaping through a glowing ring of bioluminescence under a starry sky",
+    prompt: "A dolphin leaping through a glowing ring of bioluminescence under a starry sky",
   },
   {
     text: "Owl Detective",
-    prompt:
-      "An owl wearing a monocle and top hat, solving a mystery in a misty forest at midnight",
+    prompt: "An owl wearing a monocle and top hat, solving a mystery in a misty forest at midnight",
   },
   {
     text: "Jellyfish Cathedral",
-    prompt:
-      "A jellyfish floating gracefully in an underwater cathedral made of coral and glass",
+    prompt: "A jellyfish floating gracefully in an underwater cathedral made of coral and glass",
   },
   {
     text: "Platypus River",
@@ -91,13 +85,11 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Chameleon Urban",
-    prompt:
-      "A chameleon blending into a graffiti-covered wall in an urban jungle",
+    prompt: "A chameleon blending into a graffiti-covered wall in an urban jungle",
   },
   {
     text: "Tortoise Oasis",
-    prompt:
-      "A giant tortoise slowly meandering its way to an oasis in the desert",
+    prompt: "A giant tortoise slowly meandering its way to an oasis in the desert",
   },
   {
     text: "Hummingbird Morning",
@@ -106,13 +98,11 @@ const basePrompts: { text: string; prompt: string }[] = [
   },
   {
     text: "Polar Bear",
-    prompt:
-      "A polar bear clambering onto an iceberg to greet a friendly harbor seal as dusk falls",
+    prompt: "A polar bear clambering onto an iceberg to greet a friendly harbor seal as dusk falls",
   },
   {
     text: "Lemur Sunbathing",
-    prompt:
-      "A ring-tailed lemur sunbathing on a rock in Madagascar in early morning light",
+    prompt: "A ring-tailed lemur sunbathing on a rock in Madagascar in early morning light",
   },
 ];
 
@@ -131,8 +121,6 @@ export function getRandomSuggestions(count: number = 5): Suggestion[] {
 
   return shuffledPrompts.slice(0, count).map((item, index) => ({
     text: item.text,
-    prompt: `${item.prompt}, in the style of ${
-      shuffledStyles[index % shuffledStyles.length]
-    }`,
+    prompt: `${item.prompt}, in the style of ${shuffledStyles[index % shuffledStyles.length]}`,
   }));
 }

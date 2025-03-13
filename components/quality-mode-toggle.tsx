@@ -12,10 +12,7 @@ interface QualityModeToggleProps {
   disabled?: boolean;
 }
 
-export function QualityModeToggle({
-  onValueChange,
-  disabled = false,
-}: QualityModeToggleProps) {
+export function QualityModeToggle({ onValueChange, disabled = false }: QualityModeToggleProps) {
   const { toast } = useToast();
 
   return (
@@ -41,8 +38,7 @@ export function QualityModeToggle({
           onClick={() => {
             onValueChange("quality");
             toast({
-              description:
-                "Switching to higher quality models for better results",
+              description: "Switching to higher quality models for better results",
               duration: 2000,
             });
           }}

@@ -47,9 +47,7 @@ export function ImageCarousel({
       <Carousel setApi={setApi} opts={{ align: "start", loop: true }}>
         <CarouselContent>
           {providers.map((provider, i) => {
-            const imageData = images?.find(
-              (img) => img.provider === provider,
-            )?.image;
+            const imageData = images?.find((img) => img.provider === provider)?.image;
             const timing = timings[provider];
 
             return (
@@ -85,9 +83,7 @@ export function ImageCarousel({
               key={index}
               className={cn(
                 "h-1.5 rounded-full transition-all",
-                index === currentSlide
-                  ? "w-4 bg-primary"
-                  : "w-1.5 bg-primary/50",
+                index === currentSlide ? "w-4 bg-primary" : "w-1.5 bg-primary/50"
               )}
               onClick={() => api?.scrollTo(index)}
             >

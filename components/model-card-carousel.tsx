@@ -71,7 +71,7 @@ export function ModelCardCarousel({ models }: ModelCardCarouselProps) {
           align: "start",
           dragFree: false,
           containScroll: "trimSnaps",
-          loop: true
+          loop: true,
         }}
       >
         <CarouselContent>
@@ -79,9 +79,7 @@ export function ModelCardCarousel({ models }: ModelCardCarouselProps) {
             <CarouselItem key={model.label}>
               <ModelSelect
                 {...model}
-                onChange={(value, providerKey) =>
-                  model.onChange(value, providerKey)
-                }
+                onChange={(value, providerKey) => model.onChange(value, providerKey)}
               />
               <div className="text-center text-sm text-muted-foreground mt-4">
                 {i + 1} of {models.length}
@@ -102,9 +100,7 @@ export function ModelCardCarousel({ models }: ModelCardCarouselProps) {
               key={index}
               className={cn(
                 "h-1.5 rounded-full transition-all",
-                index === currentSlide
-                  ? "w-4 bg-primary"
-                  : "w-1.5 bg-primary/50",
+                index === currentSlide ? "w-4 bg-primary" : "w-1.5 bg-primary/50"
               )}
               onClick={() => api?.scrollTo(index)}
             >

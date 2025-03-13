@@ -1,9 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { imageHelpers } from "@/lib/image-helpers";
-import {
-  OpenAIIcon,
-  ReplicateIcon,
-} from "@/lib/logos";
+import { OpenAIIcon, ReplicateIcon } from "@/lib/logos";
 import { ProviderKey } from "@/lib/provider-config";
 import { cn } from "@/lib/utils";
 import {
@@ -60,9 +57,7 @@ export function ModelSelect({
   const Icon = PROVIDER_ICONS[providerKey];
 
   return (
-    <Card
-      className={cn(`w-full transition-opacity`, enabled ? "" : "opacity-50")}
-    >
+    <Card className={cn(`w-full transition-opacity`, enabled ? "" : "opacity-50")}>
       <CardContent className="pt-4 h-full">
         <div className="flex items-center justify-between gap-2 mb-2">
           <div className="flex items-center gap-2 w-full transition-opacity duration-200">
@@ -70,8 +65,7 @@ export function ModelSelect({
               <Link
                 className="hover:opacity-80"
                 href={
-                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" +
-                  PROVIDER_LINKS[providerKey]
+                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" + PROVIDER_LINKS[providerKey]
                 }
                 target="_blank"
               >
@@ -84,8 +78,7 @@ export function ModelSelect({
               <Link
                 className="hover:opacity-80"
                 href={
-                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" +
-                  PROVIDER_LINKS[providerKey]
+                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" + PROVIDER_LINKS[providerKey]
                 }
                 target="_blank"
               >
@@ -95,9 +88,7 @@ export function ModelSelect({
                 <Select
                   defaultValue={value}
                   value={value}
-                  onValueChange={(selectedValue) =>
-                    onChange(selectedValue, providerKey)
-                  }
+                  onValueChange={(selectedValue) => onChange(selectedValue, providerKey)}
                 >
                   <SelectTrigger className="h-7 text-xs">
                     <SelectValue placeholder={value || "Select a model"} />
@@ -108,20 +99,16 @@ export function ModelSelect({
                         <SelectItem key={model} value={model} className="text-xs">
                           <span className="hidden xl:inline">
                             {imageHelpers.formatModelId(model).length > 20
-                              ? imageHelpers.formatModelId(model).slice(0, 20) +
-                                "..."
+                              ? imageHelpers.formatModelId(model).slice(0, 20) + "..."
                               : imageHelpers.formatModelId(model)}
                           </span>
                           <span className="hidden lg:inline xl:hidden">
                             {imageHelpers.formatModelId(model).length > 15
-                              ? imageHelpers.formatModelId(model).slice(0, 15) +
-                                "..."
+                              ? imageHelpers.formatModelId(model).slice(0, 15) + "..."
                               : imageHelpers.formatModelId(model)}
                           </span>
 
-                          <span className="lg:hidden">
-                            {imageHelpers.formatModelId(model)}
-                          </span>
+                          <span className="lg:hidden">{imageHelpers.formatModelId(model)}</span>
                         </SelectItem>
                       ))}
                     </SelectGroup>

@@ -1,48 +1,38 @@
-'use client'
+"use client";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from '@/registry/new-york/ui/avatar'
-import { Button } from '@/registry/new-york/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/new-york/ui/avatar";
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
-import { Input } from '@/registry/new-york/ui/input'
-import { Label } from '@/registry/new-york/ui/label'
+  CardTitle,
+} from "@/registry/new-york/ui/card";
+import { Input } from "@/registry/new-york/ui/input";
+import { Label } from "@/registry/new-york/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/registry/new-york/ui/select'
-import { Separator } from '@/registry/new-york/ui/separator'
+  SelectValue,
+} from "@/registry/new-york/ui/select";
+import { Separator } from "@/registry/new-york/ui/separator";
 
 export function CardsShare() {
   return (
     <Card>
       <CardHeader className="pb-3">
         <CardTitle>Share this document</CardTitle>
-        <CardDescription>
-          Anyone with the link can view this document.
-        </CardDescription>
+        <CardDescription>Anyone with the link can view this document.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex space-x-2">
           <Label htmlFor="link" className="sr-only">
             Link
           </Label>
-          <Input
-            id="link"
-            value="http://example.com/link/to/document"
-            readOnly
-          />
+          <Input id="link" value="http://example.com/link/to/document" readOnly />
           <Button className="shrink-0">Copy Link</Button>
         </div>
         <Separator className="my-4" />
@@ -56,9 +46,7 @@ export function CardsShare() {
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
-                    Olivia Martin
-                  </p>
+                  <p className="text-sm font-medium leading-none">Olivia Martin</p>
                   <p className="text-sm text-muted-foreground">m@example.com</p>
                 </div>
               </div>
@@ -79,9 +67,7 @@ export function CardsShare() {
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
-                    Isabella Nguyen
-                  </p>
+                  <p className="text-sm font-medium leading-none">Isabella Nguyen</p>
                   <p className="text-sm text-muted-foreground">b@example.com</p>
                 </div>
               </div>
@@ -102,9 +88,7 @@ export function CardsShare() {
                   <AvatarFallback>SD</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
-                    Sofia Davis
-                  </p>
+                  <p className="text-sm font-medium leading-none">Sofia Davis</p>
                   <p className="text-sm text-muted-foreground">p@example.com</p>
                 </div>
               </div>
@@ -122,5 +106,5 @@ export function CardsShare() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,19 +1,11 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, ChevronDown, Settings } from "lucide-react";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { ImageDisplay } from "./image-display";
 import { ImageCarousel } from "@/components/image-carousel";
 import { GeneratedImage, ImageError, ProviderTiming } from "@/lib/image-types";
-import {
-  PROVIDER_ORDER,
-  ProviderKey,
-  initializeProviderRecord,
-} from "@/lib/provider-config";
+import { PROVIDER_ORDER, ProviderKey, initializeProviderRecord } from "@/lib/provider-config";
 
 interface ImageGeneratorProps {
   images: GeneratedImage[];
@@ -38,13 +30,9 @@ export function ImageGenerator({
       {errors.length > 0 && (
         <Collapsible>
           <CollapsibleTrigger asChild>
-            <Button
-              variant="ghost"
-              className="flex items-center gap-2 text-destructive"
-            >
+            <Button variant="ghost" className="flex items-center gap-2 text-destructive">
               <AlertCircle className="h-4 w-4" />
-              {errors.length} {errors.length === 1 ? "error" : "errors"}{" "}
-              occurred
+              {errors.length} {errors.length === 1 ? "error" : "errors"} occurred
               <ChevronDown className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180" />
             </Button>
           </CollapsibleTrigger>
@@ -54,12 +42,8 @@ export function ImageGenerator({
                 <Alert key={index} variant="destructive">
                   <AlertCircle className="h-4 w-4" />
                   <div className="ml-3">
-                    <AlertTitle className="capitalize">
-                      {err.provider} Error
-                    </AlertTitle>
-                    <AlertDescription className="mt-1 text-sm">
-                      {err.message}
-                    </AlertDescription>
+                    <AlertTitle className="capitalize">{err.provider} Error</AlertTitle>
+                    <AlertDescription className="mt-1 text-sm">{err.message}</AlertDescription>
                   </div>
                 </Alert>
               ))}
@@ -70,12 +54,7 @@ export function ImageGenerator({
 
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">Generated Images</h3>
-        <Button
-          variant="outline"
-          className=""
-          onClick={() => toggleView()}
-          size="icon"
-        >
+        <Button variant="outline" className="" onClick={() => toggleView()} size="icon">
           <Settings className="h-4 w-4" />
         </Button>
       </div>

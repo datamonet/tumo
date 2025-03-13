@@ -16,24 +16,14 @@ import { Suggestion } from "@/lib/suggestions";
 import { useImageGeneration } from "@/hooks/use-image-generation";
 import { Header } from "./header";
 
-export function ImagePlayground({
-  suggestions,
-}: {
-  suggestions: Suggestion[];
-}) {
-  const {
-    images,
-    timings,
-    failedProviders,
-    isLoading,
-    startGeneration,
-    activePrompt,
-  } = useImageGeneration();
+export function ImagePlayground({ suggestions }: { suggestions: Suggestion[] }) {
+  const { images, timings, failedProviders, isLoading, startGeneration, activePrompt } =
+    useImageGeneration();
 
   const [showProviders, setShowProviders] = useState(true);
-  const [selectedModels, setSelectedModels] = useState<
-    Record<ProviderKey, string>
-  >(MODEL_CONFIGS.performance);
+  const [selectedModels, setSelectedModels] = useState<Record<ProviderKey, string>>(
+    MODEL_CONFIGS.performance
+  );
   // Always enable both providers since we removed the UI selection
   const [enabledProviders, setEnabledProviders] = useState<Record<ProviderKey, boolean>>({
     replicate: true,
@@ -44,8 +34,6 @@ export function ImagePlayground({
   const toggleView = () => {
     setShowProviders((prev) => !prev);
   };
-
-
 
   const handleModelChange = (providerKey: ProviderKey, model: string) => {
     setSelectedModels((prev) => ({ ...prev, [providerKey]: model }));
@@ -80,7 +68,6 @@ export function ImagePlayground({
           <div className="hidden lg:block full-height-divider left-[20%]"></div>
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
-              
               {/* Left Sidebar - Prompt Input */}
               <div className="col-span-5 lg:col-span-1 p-4">
                 <div className="space-y-4">
@@ -94,7 +81,7 @@ export function ImagePlayground({
                   />
                 </div>
               </div>
-              
+
               {/* Right Content - Generated Images */}
               <div className="col-span-5 lg:col-span-4 p-4">
                 {/* Active Prompt Display */}
@@ -123,8 +110,7 @@ export function ImagePlayground({
                         iconPath: provider.iconPath,
                         color: provider.color,
                         enabled: enabledProviders[key],
-                        onToggle: (enabled: boolean) =>
-                          handleProviderToggle(key, enabled),
+                        onToggle: (enabled: boolean) => handleProviderToggle(key, enabled),
                         image: imageData,
                         modelId,
                         timing,

@@ -36,7 +36,6 @@ export const PROVIDERS: Record<
     color: "from-blue-500 to-cyan-500",
     models: ["dall-e-2", "dall-e-3"],
   },
-
 };
 
 export const MODEL_CONFIGS: Record<ModelMode, Record<ProviderKey, string>> = {
@@ -50,12 +49,7 @@ export const MODEL_CONFIGS: Record<ModelMode, Record<ProviderKey, string>> = {
   },
 };
 
-export const PROVIDER_ORDER: ProviderKey[] = [
-  "replicate",
-  "openai",
-];
+export const PROVIDER_ORDER: ProviderKey[] = ["replicate", "openai"];
 
 export const initializeProviderRecord = <T>(defaultValue?: T) =>
-  Object.fromEntries(
-    PROVIDER_ORDER.map((key) => [key, defaultValue])
-  ) as Record<ProviderKey, T>;
+  Object.fromEntries(PROVIDER_ORDER.map((key) => [key, defaultValue])) as Record<ProviderKey, T>;

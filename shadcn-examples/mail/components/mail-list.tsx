@@ -1,19 +1,19 @@
-import { ComponentProps } from 'react'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { ComponentProps } from "react";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
-import { cn } from '@/lib/utils'
-import { Badge } from '@/registry/new-york/ui/badge'
-import { ScrollArea } from '@/registry/new-york/ui/scroll-area'
-import { Separator } from '@/registry/new-york/ui/separator'
-import { Mail } from '@/app/(app)/examples/mail/data'
-import { useMail } from '@/app/(app)/examples/mail/use-mail'
+import { cn } from "@/lib/utils";
+import { Badge } from "@/registry/new-york/ui/badge";
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area";
+import { Separator } from "@/registry/new-york/ui/separator";
+import { Mail } from "@/app/(app)/examples/mail/data";
+import { useMail } from "@/app/(app)/examples/mail/use-mail";
 
 type MailListProps = {
-  items: Mail[]
-}
+  items: Mail[];
+};
 
 export function MailList({ items }: MailListProps) {
-  const [mail, setMail] = useMail()
+  const [mail, setMail] = useMail();
 
   return (
     <ScrollArea className="h-screen">
@@ -22,13 +22,13 @@ export function MailList({ items }: MailListProps) {
           <button
             key={item.id}
             className={cn(
-              'flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent',
-              mail.selected === item.id && 'bg-muted'
+              "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+              mail.selected === item.id && "bg-muted"
             )}
             onClick={() =>
               setMail({
                 ...mail,
-                selected: item.id
+                selected: item.id,
               })
             }
           >
@@ -36,20 +36,16 @@ export function MailList({ items }: MailListProps) {
               <div className="flex items-center">
                 <div className="flex items-center gap-2">
                   <div className="font-semibold">{item.name}</div>
-                  {!item.read && (
-                    <span className="flex h-2 w-2 rounded-full bg-blue-600" />
-                  )}
+                  {!item.read && <span className="flex h-2 w-2 rounded-full bg-blue-600" />}
                 </div>
                 <div
                   className={cn(
-                    'ml-auto text-xs',
-                    mail.selected === item.id
-                      ? 'text-foreground'
-                      : 'text-muted-foreground'
+                    "ml-auto text-xs",
+                    mail.selected === item.id ? "text-foreground" : "text-muted-foreground"
                   )}
                 >
                   {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: true
+                    addSuffix: true,
                   })}
                 </div>
               </div>
@@ -71,19 +67,17 @@ export function MailList({ items }: MailListProps) {
         ))}
       </div>
     </ScrollArea>
-  )
+  );
 }
 
-function getBadgeVariantFromLabel(
-  label: string
-): ComponentProps<typeof Badge>['variant'] {
-  if (['work'].includes(label.toLowerCase())) {
-    return 'default'
+function getBadgeVariantFromLabel(label: string): ComponentProps<typeof Badge>["variant"] {
+  if (["work"].includes(label.toLowerCase())) {
+    return "default";
   }
 
-  if (['personal'].includes(label.toLowerCase())) {
-    return 'outline'
+  if (["personal"].includes(label.toLowerCase())) {
+    return "outline";
   }
 
-  return 'secondary'
+  return "secondary";
 }

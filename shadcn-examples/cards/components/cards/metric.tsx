@@ -1,62 +1,62 @@
-'use client'
+"use client";
 
-import { Line, LineChart } from 'recharts'
+import { Line, LineChart } from "recharts";
 
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
+  CardTitle,
+} from "@/registry/new-york/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent
-} from '@/registry/new-york/ui/chart'
+  ChartTooltipContent,
+} from "@/registry/new-york/ui/chart";
 
 const data = [
   {
     average: 400,
-    today: 240
+    today: 240,
   },
   {
     average: 300,
-    today: 139
+    today: 139,
   },
   {
     average: 200,
-    today: 980
+    today: 980,
   },
   {
     average: 278,
-    today: 390
+    today: 390,
   },
   {
     average: 189,
-    today: 480
+    today: 480,
   },
   {
     average: 239,
-    today: 380
+    today: 380,
   },
   {
     average: 349,
-    today: 430
-  }
-]
+    today: 430,
+  },
+];
 
 const chartConfig = {
   today: {
-    label: 'Today',
-    color: 'hsl(var(--primary))'
+    label: "Today",
+    color: "hsl(var(--primary))",
   },
   average: {
-    label: 'Average',
-    color: 'hsl(var(--primary))'
-  }
-} satisfies ChartConfig
+    label: "Average",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig;
 
 export function CardsMetric() {
   return (
@@ -75,7 +75,7 @@ export function CardsMetric() {
               top: 5,
               right: 10,
               left: 10,
-              bottom: 0
+              bottom: 0,
             }}
           >
             <Line
@@ -86,7 +86,7 @@ export function CardsMetric() {
               strokeOpacity={0.5}
               activeDot={{
                 r: 6,
-                fill: 'var(--color-average)'
+                fill: "var(--color-average)",
               }}
             />
             <Line
@@ -96,7 +96,7 @@ export function CardsMetric() {
               stroke="var(--color-today)"
               activeDot={{
                 r: 8,
-                style: { fill: 'var(--color-today)' }
+                style: { fill: "var(--color-today)" },
               }}
             />
             <ChartTooltip content={<ChartTooltipContent />} />
@@ -104,5 +104,5 @@ export function CardsMetric() {
         </ChartContainer>
       </CardContent>
     </Card>
-  )
+  );
 }

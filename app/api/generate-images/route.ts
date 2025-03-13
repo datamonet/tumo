@@ -30,10 +30,7 @@ const providerConfig: Record<ProviderKey, ProviderConfig> = {
   },
 };
 
-const withTimeout = <T>(
-  promise: Promise<T>,
-  timeoutMillis: number
-): Promise<T> => {
+const withTimeout = <T>(promise: Promise<T>, timeoutMillis: number): Promise<T> => {
   return Promise.race([
     promise,
     new Promise<T>((_, reject) =>
@@ -44,8 +41,7 @@ const withTimeout = <T>(
 
 export async function POST(req: NextRequest) {
   const requestId = Math.random().toString(36).substring(7);
-  const { prompt, provider, modelId } =
-    (await req.json()) as GenerateImageRequest;
+  const { prompt, provider, modelId } = (await req.json()) as GenerateImageRequest;
 
   try {
     if (!prompt || !provider || !modelId || !providerConfig[provider]) {

@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import { PlusCircle } from 'lucide-react'
+import Image from "next/image";
+import { PlusCircle } from "lucide-react";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -10,29 +10,29 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger
-} from '@/registry/new-york/ui/context-menu'
+  ContextMenuTrigger,
+} from "@/registry/new-york/ui/context-menu";
 
-import { Album } from '../data/albums'
-import { playlists } from '../data/playlists'
+import { Album } from "../data/albums";
+import { playlists } from "../data/playlists";
 
 type AlbumArtworkProps = {
-  album: Album
-  aspectRatio?: 'portrait' | 'square'
-  width?: number
-  height?: number
-} & React.HTMLAttributes<HTMLDivElement>
+  album: Album;
+  aspectRatio?: "portrait" | "square";
+  width?: number;
+  height?: number;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export function AlbumArtwork({
   album,
-  aspectRatio = 'portrait',
+  aspectRatio = "portrait",
   width,
   height,
   className,
   ...props
 }: AlbumArtworkProps) {
   return (
-    <div className={cn('space-y-3', className)} {...props}>
+    <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
@@ -42,8 +42,8 @@ export function AlbumArtwork({
               width={width}
               height={height}
               className={cn(
-                'h-auto w-auto object-cover transition-all hover:scale-105',
-                aspectRatio === 'portrait' ? 'aspect-[3/4]' : 'aspect-square'
+                "h-auto w-auto object-cover transition-all hover:scale-105",
+                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
               )}
             />
           </div>
@@ -91,5 +91,5 @@ export function AlbumArtwork({
         <p className="text-xs text-muted-foreground">{album.artist}</p>
       </div>
     </div>
-  )
+  );
 }

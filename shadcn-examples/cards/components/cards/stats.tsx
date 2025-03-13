@@ -1,60 +1,55 @@
-'use client'
+"use client";
 
-import { Bar, BarChart, Line, LineChart } from 'recharts'
+import { Bar, BarChart, Line, LineChart } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
-import { ChartConfig, ChartContainer } from '@/registry/new-york/ui/chart'
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/new-york/ui/card";
+import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart";
 
 const data = [
   {
     revenue: 10400,
-    subscription: 240
+    subscription: 240,
   },
   {
     revenue: 14405,
-    subscription: 300
+    subscription: 300,
   },
   {
     revenue: 9400,
-    subscription: 200
+    subscription: 200,
   },
   {
     revenue: 8200,
-    subscription: 278
+    subscription: 278,
   },
   {
     revenue: 7000,
-    subscription: 189
+    subscription: 189,
   },
   {
     revenue: 9600,
-    subscription: 239
+    subscription: 239,
   },
   {
     revenue: 11244,
-    subscription: 278
+    subscription: 278,
   },
   {
     revenue: 26475,
-    subscription: 189
-  }
-]
+    subscription: 189,
+  },
+];
 
 const chartConfig = {
   revenue: {
-    label: 'Revenue',
-    color: 'hsl(var(--primary))'
+    label: "Revenue",
+    color: "hsl(var(--primary))",
   },
   subscription: {
-    label: 'Subscriptions',
-    color: 'hsl(var(--primary))'
-  }
-} satisfies ChartConfig
+    label: "Subscriptions",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig;
 
 export function CardsStats() {
   return (
@@ -65,9 +60,7 @@ export function CardsStats() {
         </CardHeader>
         <CardContent className="pb-0">
           <div className="text-2xl font-bold">$15,231.89</div>
-          <p className="text-xs text-muted-foreground">
-            +20.1% from last month
-          </p>
+          <p className="text-xs text-muted-foreground">+20.1% from last month</p>
           <ChartContainer config={chartConfig} className="h-[80px] w-full">
             <LineChart
               data={data}
@@ -75,7 +68,7 @@ export function CardsStats() {
                 top: 5,
                 right: 10,
                 left: 10,
-                bottom: 0
+                bottom: 0,
               }}
             >
               <Line
@@ -84,7 +77,7 @@ export function CardsStats() {
                 dataKey="revenue"
                 stroke="var(--color-revenue)"
                 activeDot={{
-                  r: 6
+                  r: 6,
                 }}
               />
             </LineChart>
@@ -97,20 +90,14 @@ export function CardsStats() {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">+2350</div>
-          <p className="text-xs text-muted-foreground">
-            +180.1% from last month
-          </p>
+          <p className="text-xs text-muted-foreground">+180.1% from last month</p>
           <ChartContainer config={chartConfig} className="mt-2 h-[80px] w-full">
             <BarChart data={data}>
-              <Bar
-                dataKey="subscription"
-                fill="var(--color-subscription)"
-                radius={4}
-              />
+              <Bar dataKey="subscription" fill="var(--color-subscription)" radius={4} />
             </BarChart>
           </ChartContainer>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Button } from '@/registry/new-york/ui/button'
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -6,10 +6,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/registry/new-york/ui/dialog'
-import { Input } from '@/registry/new-york/ui/input'
-import { Label } from '@/registry/new-york/ui/label'
+  DialogTrigger,
+} from "@/registry/new-york/ui/dialog";
+import { Input } from "@/registry/new-york/ui/input";
+import { Label } from "@/registry/new-york/ui/label";
 
 export function PodcastEmptyPlaceholder() {
   return (
@@ -43,9 +43,7 @@ export function PodcastEmptyPlaceholder() {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Add Podcast</DialogTitle>
-              <DialogDescription>
-                Copy and paste the podcast feed URL to import.
-              </DialogDescription>
+              <DialogDescription>Copy and paste the podcast feed URL to import.</DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid gap-2">
@@ -60,5 +58,5 @@ export function PodcastEmptyPlaceholder() {
         </Dialog>
       </div>
     </div>
-  )
+  );
 }

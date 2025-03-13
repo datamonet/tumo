@@ -76,14 +76,12 @@ export function PromptInput({
                 onClick={() => handleSuggestionSelect(suggestion.prompt)}
                 className="flex items-center justify-between px-2 rounded-lg py-1 bg-background text-sm hover:bg-accent group transition-colors duration-200"
               >
-                <span className="text-foreground text-xs">
-                  {suggestion.text.toLowerCase()}
-                </span>
+                <span className="text-foreground text-xs">{suggestion.text.toLowerCase()}</span>
                 <ArrowUpRight className="ml-1 h-3 w-3 text-muted-foreground group-hover:text-foreground" />
               </button>
             ))}
           </div>
-          
+
           <div className="flex justify-end mt-3">
             <button
               onClick={handleSubmit}

@@ -1,43 +1,35 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import { PopoverProps } from '@radix-ui/react-popover'
-import { Check, ChevronsUpDown } from 'lucide-react'
+import * as React from "react";
+import { PopoverProps } from "@radix-ui/react-popover";
+import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from '@/lib/utils'
-import { useMutationObserver } from '@/hooks/use-mutation-observer'
-import { Button } from '@/registry/new-york/ui/button'
+import { cn } from "@/lib/utils";
+import { useMutationObserver } from "@/hooks/use-mutation-observer";
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
-} from '@/registry/new-york/ui/command'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger
-} from '@/registry/new-york/ui/hover-card'
-import { Label } from '@/registry/new-york/ui/label'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/registry/new-york/ui/popover'
+  CommandList,
+} from "@/registry/new-york/ui/command";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/registry/new-york/ui/hover-card";
+import { Label } from "@/registry/new-york/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/new-york/ui/popover";
 
-import { Model, ModelType } from '../data/models'
+import { Model, ModelType } from "../data/models";
 
 type ModelSelectorProps = {
-  types: readonly ModelType[]
-  models: Model[]
-} & PopoverProps
+  types: readonly ModelType[];
+  models: Model[];
+} & PopoverProps;
 
 export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
-  const [open, setOpen] = React.useState(false)
-  const [selectedModel, setSelectedModel] = React.useState<Model>(models[0])
-  const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
+  const [open, setOpen] = React.useState(false);
+  const [selectedModel, setSelectedModel] = React.useState<Model>(models[0]);
+  const [peekedModel, setPeekedModel] = React.useState<Model>(models[0]);
 
   return (
     <div className="grid gap-2">
@@ -45,13 +37,9 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
         <HoverCardTrigger asChild>
           <Label htmlFor="model">Model</Label>
         </HoverCardTrigger>
-        <HoverCardContent
-          align="start"
-          className="w-[260px] text-sm"
-          side="left"
-        >
-          The model which will generate the completion. Some models are suitable
-          for natural language tasks, others specialize in code. Learn more.
+        <HoverCardContent align="start" className="w-[260px] text-sm" side="left">
+          The model which will generate the completion. Some models are suitable for natural
+          language tasks, others specialize in code. Learn more.
         </HoverCardContent>
       </HoverCard>
       <Popover open={open} onOpenChange={setOpen} {...props}>
@@ -63,31 +51,20 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             aria-label="Select a model"
             className="w-full justify-between"
           >
-            {selectedModel ? selectedModel.name : 'Select a model...'}
+            {selectedModel ? selectedModel.name : "Select a model..."}
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[250px] p-0">
           <HoverCard>
-            <HoverCardContent
-              side="left"
-              align="start"
-              forceMount
-              className="min-h-[280px]"
-            >
+            <HoverCardContent side="left" align="start" forceMount className="min-h-[280px]">
               <div className="grid gap-2">
                 <h4 className="font-medium leading-none">{peekedModel.name}</h4>
-                <div className="text-sm text-muted-foreground">
-                  {peekedModel.description}
-                </div>
+                <div className="text-sm text-muted-foreground">{peekedModel.description}</div>
                 {peekedModel.strengths ? (
                   <div className="mt-4 grid gap-2">
-                    <h5 className="text-sm font-medium leading-none">
-                      Strengths
-                    </h5>
-                    <ul className="text-sm text-muted-foreground">
-                      {peekedModel.strengths}
-                    </ul>
+                    <h5 className="text-sm font-medium leading-none">Strengths</h5>
+                    <ul className="text-sm text-muted-foreground">{peekedModel.strengths}</ul>
                   </div>
                 ) : null}
               </div>
@@ -108,8 +85,8 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
                           isSelected={selectedModel?.id === model.id}
                           onPeek={(model) => setPeekedModel(model)}
                           onSelect={() => {
-                            setSelectedModel(model)
-                            setOpen(false)
+                            setSelectedModel(model);
+                            setOpen(false);
                           }}
                         />
                       ))}
@@ -121,30 +98,30 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }
 
 type ModelItemProps = {
-  model: Model
-  isSelected: boolean
-  onSelect: () => void
-  onPeek: (model: Model) => void
-}
+  model: Model;
+  isSelected: boolean;
+  onSelect: () => void;
+  onPeek: (model: Model) => void;
+};
 
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = React.useRef<HTMLDivElement>(null);
 
   useMutationObserver(ref, (mutations) => {
     mutations.forEach((mutation) => {
       if (
-        mutation.type === 'attributes' &&
-        mutation.attributeName === 'aria-selected' &&
-        ref.current?.getAttribute('aria-selected') === 'true'
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.getAttribute("aria-selected") === "true"
       ) {
-        onPeek(model)
+        onPeek(model);
       }
-    })
-  })
+    });
+  });
 
   return (
     <CommandItem
@@ -154,9 +131,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
     >
       {model.name}
-      <Check
-        className={cn('ml-auto', isSelected ? 'opacity-100' : 'opacity-0')}
-      />
+      <Check className={cn("ml-auto", isSelected ? "opacity-100" : "opacity-0")} />
     </CommandItem>
-  )
+  );
 }

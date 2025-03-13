@@ -1,37 +1,35 @@
-'use client'
+"use client";
 
-import * as React from 'react'
+import * as React from "react";
 
-import { Button } from '@/registry/new-york/ui/button'
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
-import { Input } from '@/registry/new-york/ui/input'
-import { Label } from '@/registry/new-york/ui/label'
+  CardTitle,
+} from "@/registry/new-york/ui/card";
+import { Input } from "@/registry/new-york/ui/input";
+import { Label } from "@/registry/new-york/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/registry/new-york/ui/select'
-import { Textarea } from '@/registry/new-york/ui/textarea'
+  SelectValue,
+} from "@/registry/new-york/ui/select";
+import { Textarea } from "@/registry/new-york/ui/textarea";
 
 export function CardsReportIssue() {
-  const id = React.useId()
+  const id = React.useId();
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Report an issue</CardTitle>
-        <CardDescription>
-          What area are you having problems with?
-        </CardDescription>
+        <CardDescription>What area are you having problems with?</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -88,5 +86,5 @@ export function CardsReportIssue() {
         <Button size="sm">Submit</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

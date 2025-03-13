@@ -1,13 +1,13 @@
-import { ChevronDown, Circle, Plus, Star } from 'lucide-react'
+import { ChevronDown, Circle, Plus, Star } from "lucide-react";
 
-import { Button } from '@/registry/new-york/ui/button'
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/registry/new-york/ui/card'
+  CardTitle,
+} from "@/registry/new-york/ui/card";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -15,9 +15,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '@/registry/new-york/ui/dropdown-menu'
-import { Separator } from '@/registry/new-york/ui/separator'
+  DropdownMenuTrigger,
+} from "@/registry/new-york/ui/dropdown-menu";
+import { Separator } from "@/registry/new-york/ui/separator";
 
 export function DemoGithub() {
   return (
@@ -26,8 +26,8 @@ export function DemoGithub() {
         <div className="space-y-1">
           <CardTitle>shadcn/ui</CardTitle>
           <CardDescription>
-            Beautifully designed components that you can copy and paste into
-            your apps. Accessible. Customizable. Open Source.
+            Beautifully designed components that you can copy and paste into your apps. Accessible.
+            Customizable. Open Source.
           </CardDescription>
         </div>
         <div className="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">
@@ -42,17 +42,10 @@ export function DemoGithub() {
                 <ChevronDown className="text-secondary-foreground" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              alignOffset={-5}
-              className="w-[200px]"
-              forceMount
-            >
+            <DropdownMenuContent align="end" alignOffset={-5} className="w-[200px]" forceMount>
               <DropdownMenuLabel>Suggested Lists</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem checked>
-                Future Ideas
-              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem checked>Future Ideas</DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem>My Stack</DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
               <DropdownMenuSeparator />
@@ -77,5 +70,5 @@ export function DemoGithub() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

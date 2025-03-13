@@ -1,28 +1,23 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
-import { PlusCircle } from 'lucide-react'
+import { Metadata } from "next";
+import Image from "next/image";
+import { PlusCircle } from "lucide-react";
 
-import { Button } from '@/registry/new-york/ui/button'
-import { ScrollArea, ScrollBar } from '@/registry/new-york/ui/scroll-area'
-import { Separator } from '@/registry/new-york/ui/separator'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger
-} from '@/registry/new-york/ui/tabs'
+import { Button } from "@/registry/new-york/ui/button";
+import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area";
+import { Separator } from "@/registry/new-york/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs";
 
-import { AlbumArtwork } from './components/album-artwork'
-import { Menu } from './components/menu'
-import { PodcastEmptyPlaceholder } from './components/podcast-empty-placeholder'
-import { Sidebar } from './components/sidebar'
-import { listenNowAlbums, madeForYouAlbums } from './data/albums'
-import { playlists } from './data/playlists'
+import { AlbumArtwork } from "./components/album-artwork";
+import { Menu } from "./components/menu";
+import { PodcastEmptyPlaceholder } from "./components/podcast-empty-placeholder";
+import { Sidebar } from "./components/sidebar";
+import { listenNowAlbums, madeForYouAlbums } from "./data/albums";
+import { playlists } from "./data/playlists";
 
 export const metadata: Metadata = {
-  title: 'Music App',
-  description: 'Example music app using the components.'
-}
+  title: "Music App",
+  description: "Example music app using the components.",
+};
 
 export default function MusicPage() {
   return (
@@ -69,15 +64,10 @@ export default function MusicPage() {
                         </Button>
                       </div>
                     </div>
-                    <TabsContent
-                      value="music"
-                      className="border-none p-0 outline-none"
-                    >
+                    <TabsContent value="music" className="border-none p-0 outline-none">
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
-                            Listen Now
-                          </h2>
+                          <h2 className="text-2xl font-semibold tracking-tight">Listen Now</h2>
                           <p className="text-sm text-muted-foreground">
                             Top picks for you. Updated daily.
                           </p>
@@ -102,9 +92,7 @@ export default function MusicPage() {
                         </ScrollArea>
                       </div>
                       <div className="mt-6 space-y-1">
-                        <h2 className="text-2xl font-semibold tracking-tight">
-                          Made for You
-                        </h2>
+                        <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
                         <p className="text-sm text-muted-foreground">
                           Your personal playlists. Updated daily.
                         </p>
@@ -134,9 +122,7 @@ export default function MusicPage() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
-                            New Episodes
-                          </h2>
+                          <h2 className="text-2xl font-semibold tracking-tight">New Episodes</h2>
                           <p className="text-sm text-muted-foreground">
                             Your favorite podcasts. Updated daily.
                           </p>
@@ -153,5 +139,5 @@ export default function MusicPage() {
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -6,66 +6,66 @@ import {
   Circle,
   CircleOff,
   HelpCircle,
-  Timer
-} from 'lucide-react'
+  Timer,
+} from "lucide-react";
 
 export const labels = [
   {
-    value: 'bug',
-    label: 'Bug'
+    value: "bug",
+    label: "Bug",
   },
   {
-    value: 'feature',
-    label: 'Feature'
+    value: "feature",
+    label: "Feature",
   },
   {
-    value: 'documentation',
-    label: 'Documentation'
-  }
-]
+    value: "documentation",
+    label: "Documentation",
+  },
+];
 
 export const statuses = [
   {
-    value: 'backlog',
-    label: 'Backlog',
-    icon: HelpCircle
+    value: "backlog",
+    label: "Backlog",
+    icon: HelpCircle,
   },
   {
-    value: 'todo',
-    label: 'Todo',
-    icon: Circle
+    value: "todo",
+    label: "Todo",
+    icon: Circle,
   },
   {
-    value: 'in progress',
-    label: 'In Progress',
-    icon: Timer
+    value: "in progress",
+    label: "In Progress",
+    icon: Timer,
   },
   {
-    value: 'done',
-    label: 'Done',
-    icon: CheckCircle
+    value: "done",
+    label: "Done",
+    icon: CheckCircle,
   },
   {
-    value: 'canceled',
-    label: 'Canceled',
-    icon: CircleOff
-  }
-]
+    value: "canceled",
+    label: "Canceled",
+    icon: CircleOff,
+  },
+];
 
 export const priorities = [
   {
-    label: 'Low',
-    value: 'low',
-    icon: ArrowDown
+    label: "Low",
+    value: "low",
+    icon: ArrowDown,
   },
   {
-    label: 'Medium',
-    value: 'medium',
-    icon: ArrowRight
+    label: "Medium",
+    value: "medium",
+    icon: ArrowRight,
   },
   {
-    label: 'High',
-    value: 'high',
-    icon: ArrowUp
-  }
-]
+    label: "High",
+    value: "high",
+    icon: ArrowUp,
+  },
+];
