@@ -39,8 +39,8 @@ export const Header = () => {
         <div className="flex h-16 items-center px-4">
           <Link href="https://takin.ai" target="_blank" className="flex items-center hover:opacity-90 transition-opacity">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo/takin_logo.svg" alt="Takin Image Studio" className="h-8 mr-2" />
-            <span className="font-semibold text-lg">Takin Image Studio</span>
+            <img src="/logo/takin_logo.svg" alt="TUMO" className="h-8 mr-2" />
+            <span className="font-semibold text-lg">TUMO</span>
           </Link>
           
           <MainNav className="mx-6" />
