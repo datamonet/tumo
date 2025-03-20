@@ -10,11 +10,9 @@ import {
   PROVIDER_ORDER,
   ProviderKey,
   ModelMode,
-  initializeProviderRecord,
 } from "@/lib/provider-config";
 import { Suggestion } from "@/lib/suggestions";
 import { useImageGeneration } from "@/hooks/use-image-generation";
-import { Header } from "./header";
 
 export function ImagePlayground({ suggestions }: { suggestions: Suggestion[] }) {
   const { images, timings, failedProviders, isLoading, startGeneration, activePrompt } =
@@ -62,7 +60,6 @@ export function ImagePlayground({ suggestions }: { suggestions: Suggestion[] }) 
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto">
-        <Header />
         <div className="relative border-t-thin">
           {/* Full-height divider */}
           <div className="hidden lg:block full-height-divider left-[20%]"></div>

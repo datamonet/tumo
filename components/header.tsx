@@ -12,7 +12,9 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { cn } from "../lib/utils";
-import { Settings, User, HelpCircle, Github } from "lucide-react";
+import { Settings, User, HelpCircle, Github, LogOut } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   items?: {
@@ -21,7 +23,7 @@ interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   }[];
 }
 
-function MainNav({ className, items, ...props }: MainNavProps) {
+function MainNav({ className, ...props }: MainNavProps) {
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)} {...props}>
       {/* Navigation links can be added here if needed */}
@@ -30,15 +32,13 @@ function MainNav({ className, items, ...props }: MainNavProps) {
 }
 
 export const Header = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
   return (
     <header>
       <div className="border-b-thin">
         <div className="flex h-16 items-center px-4">
-          <Link
-            href="https://takin.ai"
-            target="_blank"
-            className="flex items-center hover:opacity-90 transition-opacity"
-          >
+          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             {}
             <img src="/logo/takin_logo.svg" alt="TUMO" className="h-8 mr-2" />
             <span className="font-semibold text-lg">TUMO</span>
@@ -55,31 +55,49 @@ export const Header = () => {
               <Github className="h-5 w-5" />
               <span>GitHub</span>
             </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <User className="h-5 w-5" />
+            {session?.user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <User className="h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>{session.user.name || session.user.email}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem onClick={() => router.push("/profile")}>
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Settings</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <HelpCircle className="mr-2 h-4 w-4" />
+                      <span>Help</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Github className="mr-2 h-4 w-4" />
+                      <span>GitHub</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => signOut()}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sign Out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" onClick={() => router.push("/login")}>
+                  Sign In
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <HelpCircle className="mr-2 h-4 w-4" />
-                    <span>Help</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Github className="mr-2 h-4 w-4" />
-                    <span>GitHub</span>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <Button onClick={() => router.push("/register")}>Sign Up</Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

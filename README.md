@@ -14,10 +14,41 @@ Tumo – Open-source AI media generation via API, supporting Replicate, OpenAI, 
 
 2. Create an `.env` file to store API keys. Use `.env.example` as a reference.
 
-3. Run the development server:
+3. Initialize the Prisma database:
+
+   ```bash
+   # Generate Prisma client
+   pnpm prisma generate
+
+   # Create and apply migrations
+   pnpm prisma migrate dev --name init
+   ```
+
+4. Run the development server:
 
    ```bash
    pnpm dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the application.
+5. Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Database Management
+
+If you need to reset the database:
+
+```bash
+# Reset the database (deletes all data)
+pnpm prisma migrate reset --force
+
+# Apply migrations after reset
+pnpm prisma migrate dev
+```
+
+To view your database:
+
+```bash
+# Open Prisma Studio
+pnpm prisma studio
+```
+
+This project was bootstrapped with [https://github.com/vercel-labs/ai-sdk-image-generator](https://github.com/vercel-labs/ai-sdk-image-generator).
