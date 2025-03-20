@@ -52,33 +52,44 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Prevent multiple submissions
+    if (isLoading) return;
+
     setIsLoading(true);
     setError(null);
 
     try {
+      console.log("Attempting sign in...");
       const result = await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
 
+      console.log("Sign in result:", result);
+
       if (result?.error) {
+        console.error("Sign in error:", result.error);
         setError("Invalid email or password");
         setIsLoading(false);
         return;
       }
 
-      // First reset loading state to avoid UI being stuck
-      setIsLoading(false);
+      if (!result?.ok) {
+        console.error("Sign in not OK", result);
+        setError("Authentication failed. Please try again.");
+        setIsLoading(false);
+        return;
+      }
 
-      // Use a small timeout to ensure state updates before navigation
-      setTimeout(() => {
-        // Then navigate to home page
-        router.push("/");
-        // Force a refresh to ensure session is properly loaded
-        router.refresh();
-      }, 100);
-    } catch (_error) {
+      console.log("Sign in successful, navigating to home");
+
+      // Use window.location for a full page reload instead of client-side navigation
+      // This ensures the session is fully established before rendering the dashboard
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Sign in exception:", error);
       setError("Something went wrong. Please try again.");
       setIsLoading(false);
     }
