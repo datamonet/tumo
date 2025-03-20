@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
   // For protected routes, check auth status using a cookie
   const authCookie = request.cookies.get("next-auth.session-token");
 
-  // If no auth cookie, redirect to login
+  // If no auth cookie, redirect to login or setup
   if (!authCookie) {
     // First check if any users exist by calling our API
     try {
@@ -43,6 +43,12 @@ export async function middleware(request: NextRequest) {
       const url = new URL("/login", request.url);
       url.searchParams.set("callbackUrl", request.nextUrl.pathname);
       return NextResponse.redirect(url);
+    }
+  } else {
+    // User is authenticated, check if they're trying to access setup page
+    if (request.nextUrl.pathname === "/setup") {
+      // Redirect authenticated users away from setup page to home
+      return NextResponse.redirect(new URL("/", request.url));
     }
   }
 

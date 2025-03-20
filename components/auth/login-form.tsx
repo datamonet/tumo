@@ -20,28 +20,35 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
   const [setupRequired, setSetupRequired] = useState(false);
 
   useEffect(() => {
-    const checkSetupStatus = async () => {
-      try {
-        const response = await fetch("/api/auth/user-exists");
-        const data = await response.json();
+    // Only check setup status if not already in the process of logging in
+    if (!isLoading) {
+      const checkSetupStatus = async () => {
+        try {
+          const response = await fetch("/api/auth/user-exists");
+          const data = await response.json();
 
-        if (!data.exists) {
+          if (!data.exists) {
+            setSetupRequired(true);
+            // Redirect to setup page if no users exist
+            router.push("/setup");
+          } else {
+            // Users exist, just mark setup as not required
+            setSetupRequired(false);
+            setCheckingSetup(false);
+          }
+        } catch (error) {
+          console.error("Error checking user existence:", error);
+          // If we can't determine if users exist, assume setup is required
           setSetupRequired(true);
-          // Redirect to setup page if no users exist
           router.push("/setup");
+        } finally {
+          setCheckingSetup(false);
         }
-      } catch (error) {
-        console.error("Error checking user existence:", error);
-        // If we can't determine if users exist, assume setup is required
-        setSetupRequired(true);
-        router.push("/setup");
-      } finally {
-        setCheckingSetup(false);
-      }
-    };
+      };
 
-    checkSetupStatus();
-  }, [router]);
+      checkSetupStatus();
+    }
+  }, [router, isLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

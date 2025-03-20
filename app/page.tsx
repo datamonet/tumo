@@ -1,6 +1,7 @@
 import { ImagePlayground } from "@/components/image-playground";
 import { getRandomSuggestions } from "@/lib/suggestions";
 import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -21,10 +22,17 @@ async function checkSetupRequired() {
 }
 
 export default async function Page() {
-  const setupRequired = await checkSetupRequired();
+  // Check if user is authenticated
+  const session = await auth();
 
-  if (setupRequired) {
-    redirect("/setup");
+  // Only check setup if user is not authenticated
+  if (!session || !session.user) {
+    const setupRequired = await checkSetupRequired();
+    if (setupRequired) {
+      redirect("/setup");
+    } else {
+      redirect("/login");
+    }
   }
 
   return <ImagePlayground suggestions={getRandomSuggestions()} />;
