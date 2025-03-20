@@ -1,47 +1,36 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { auth } from "./auth";
-import prisma from "./lib/prisma";
 
 export async function middleware(request: NextRequest) {
-  // Check if the setup page is being accessed
-  const isSetupPath = request.nextUrl.pathname === "/setup";
+  // Define paths that are accessible without authentication
+  const publicPaths = ["/login", "/api/auth", "/setup", "/logo"];
 
-  // If it's the setup page, check if any users exist
-  if (isSetupPath) {
-    try {
-      const userCount = await prisma.user.count();
+  // Check if the current path is public
+  const isPublicPath =
+    publicPaths.some((path) => request.nextUrl.pathname.startsWith(path)) ||
+    request.nextUrl.pathname.match(/\.(jpg|jpeg|png|gif|svg|ico)$/) ||
+    request.nextUrl.pathname.includes("_next");
 
-      // If users already exist, redirect to login
-      if (userCount > 0) {
-        return NextResponse.redirect(new URL("/login", request.url));
-      }
-
-      // Otherwise allow access to setup page
-      return NextResponse.next();
-    } catch (error) {
-      console.error("Error checking user count:", error);
-      // If there's an error, still allow access to setup page
-      return NextResponse.next();
-    }
+  // If it's a public path, allow access
+  if (isPublicPath) {
+    return NextResponse.next();
   }
 
-  const session = await auth();
+  // For protected routes, check auth status using a cookie
+  const authCookie = request.cookies.get("next-auth.session-token");
 
-  // List of paths that don't require authentication
-  const publicPaths = ["/login", "/register", "/forgot-password"];
-
-  // Check if the requested path is in the public paths list
-  const isPublicPath = publicPaths.some((path) => request.nextUrl.pathname.startsWith(path));
-
-  // If the user is not logged in and trying to access a protected route
-  if (!session && !isPublicPath) {
-    // Check if any users exist in the system
+  // If no auth cookie, redirect to login
+  if (!authCookie) {
+    // First check if any users exist by calling our API
     try {
-      const userCount = await prisma.user.count();
+      const response = await fetch(new URL("/api/auth/user-exists", request.url));
+      if (!response.ok) throw new Error("Failed to check if users exist");
 
-      // If no users exist, redirect to setup page
-      if (userCount === 0) {
+      const data = await response.json();
+
+      // If no users exist, redirect to setup
+      if (!data.exists) {
         return NextResponse.redirect(new URL("/setup", request.url));
       }
 
@@ -50,17 +39,11 @@ export async function middleware(request: NextRequest) {
       url.searchParams.set("callbackUrl", request.nextUrl.pathname);
       return NextResponse.redirect(url);
     } catch (error) {
-      console.error("Error checking user count:", error);
-      // If there's an error, redirect to login
+      // If we can't determine if users exist, default to login
       const url = new URL("/login", request.url);
       url.searchParams.set("callbackUrl", request.nextUrl.pathname);
       return NextResponse.redirect(url);
     }
-  }
-
-  // If the user is logged in and trying to access login/register pages
-  if (session && isPublicPath) {
-    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
@@ -69,7 +52,10 @@ export async function middleware(request: NextRequest) {
 // Configure which paths this middleware will run on
 export const config = {
   matcher: [
-    // Apply to all routes except api, _next, static, and public files
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png$).*)",
+    // Apply to specific routes that need authentication
+    "/",
+    "/dashboard/:path*",
+    "/admin/:path*",
+    "/profile/:path*",
   ],
 };

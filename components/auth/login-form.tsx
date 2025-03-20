@@ -22,16 +22,19 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
   useEffect(() => {
     const checkSetupStatus = async () => {
       try {
-        const response = await fetch("/api/auth/check-setup");
+        const response = await fetch("/api/auth/user-exists");
         const data = await response.json();
 
-        if (data.setupRequired) {
+        if (!data.exists) {
           setSetupRequired(true);
           // Redirect to setup page if no users exist
           router.push("/setup");
         }
       } catch (error) {
-        console.error("Error checking setup status:", error);
+        console.error("Error checking user existence:", error);
+        // If we can't determine if users exist, assume setup is required
+        setSetupRequired(true);
+        router.push("/setup");
       } finally {
         setCheckingSetup(false);
       }
@@ -105,15 +108,7 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
               </div>
 
               <div className="grid gap-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/forgot-password"
-                    className="text-sm font-medium text-primary underline-offset-4 hover:underline"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
+                <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -123,6 +118,14 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <div className="flex justify-end">
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    Forgot password?
+                  </Link>
+                </div>
               </div>
 
               <Button disabled={isLoading} type="submit" className="w-full">

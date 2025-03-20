@@ -1,16 +1,21 @@
 import { ImagePlayground } from "@/components/image-playground";
 import { getRandomSuggestions } from "@/lib/suggestions";
 import { redirect } from "next/navigation";
-import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
 async function checkSetupRequired() {
   try {
-    const userCount = await prisma.user.count();
-    return userCount === 0;
+    const response = await fetch(
+      process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}/api/auth/user-exists`
+        : "http://localhost:3000/api/auth/user-exists",
+      { cache: "no-store" }
+    );
+    const data = await response.json();
+    return !data.exists;
   } catch (error) {
-    console.error("Error checking user count:", error);
+    console.error("Error checking user existence:", error);
     return false;
   }
 }

@@ -32,7 +32,40 @@ Tumo – Open-source AI media generation via API, supporting Replicate, OpenAI, 
 
 5. Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Database Management
+## Database Setup
+
+Tumo uses PostgreSQL as its database. You'll need to have PostgreSQL installed and running before starting the application.
+
+### Setting up PostgreSQL
+
+1. Install PostgreSQL:
+
+   - macOS: `brew install postgresql` and `brew services start postgresql`
+   - Linux: `sudo apt install postgresql`
+   - Windows: Download from [postgresql.org](https://www.postgresql.org/download/windows/)
+
+2. Create a database for Tumo:
+
+   ```bash
+   # Connect to PostgreSQL
+   psql -U postgres
+
+   # Create a new database
+   CREATE DATABASE tumo;
+
+   # Create a user (optional)
+   CREATE USER tumouser WITH ENCRYPTED PASSWORD 'your_password';
+
+   # Grant privileges
+   GRANT ALL PRIVILEGES ON DATABASE tumo TO tumouser;
+   ```
+
+3. Update your `.env` file with the PostgreSQL connection string:
+   ```
+   DATABASE_URL="postgresql://username:password@localhost:5432/tumo"
+   ```
+
+### Database Management
 
 If you need to reset the database:
 
