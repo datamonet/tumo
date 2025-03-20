@@ -68,8 +68,16 @@ export function LoginForm({ className, ...props }: React.HTMLAttributes<HTMLDivE
         return;
       }
 
-      router.push("/");
-      router.refresh();
+      // First reset loading state to avoid UI being stuck
+      setIsLoading(false);
+
+      // Use a small timeout to ensure state updates before navigation
+      setTimeout(() => {
+        // Then navigate to home page
+        router.push("/");
+        // Force a refresh to ensure session is properly loaded
+        router.refresh();
+      }, 100);
     } catch (_error) {
       setError("Something went wrong. Please try again.");
       setIsLoading(false);
