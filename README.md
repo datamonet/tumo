@@ -67,7 +67,24 @@ Tumo uses PostgreSQL as its database. You'll need to have PostgreSQL installed a
 
 ### Database Management
 
-If you need to reset the database:
+#### Reset Database Script
+
+You can use the provided reset-db script to quickly reset your development database:
+
+```bash
+# Reset the database and create an admin user
+pnpm reset-db
+```
+
+This script will:
+
+1. Drop all tables in the database
+2. Run migrations to recreate the schema
+3. Create an initial admin user with the credentials you provide
+
+#### Manual Database Management
+
+If you prefer manual control:
 
 ```bash
 # Reset the database (deletes all data)
@@ -83,5 +100,21 @@ To view your database:
 # Open Prisma Studio
 pnpm prisma studio
 ```
+
+### Development Configuration
+
+#### Prisma Logging
+
+By default, Prisma query logs are disabled to keep the console clean. If you need to debug database queries:
+
+1. Set `DEBUG_PRISMA=true` in your `.env` file
+2. Restart the development server
+
+```bash
+# In your .env file
+DEBUG_PRISMA=true
+```
+
+## Acknowledgments
 
 This project was bootstrapped with [https://github.com/vercel-labs/ai-sdk-image-generator](https://github.com/vercel-labs/ai-sdk-image-generator).

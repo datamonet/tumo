@@ -31,8 +31,19 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   distDir: '.next',
   onDemandEntries: {
-    // Exclude shadcn-examples directory
-    exclude: ['shadcn-examples/**/*'],
+    // Control how Next.js keeps pages in memory
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 2,
+  },
+  
+  // Use webpack to exclude shadcn-examples directory
+  webpack: (config, { isServer }) => {
+    // Exclude shadcn-examples directory from being processed
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: /shadcn-examples/,
+    };
+    return config;
   },
 };
 
