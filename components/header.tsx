@@ -40,7 +40,7 @@ export const Header = () => {
         <div className="flex h-16 items-center px-4">
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             {}
-            <img src="/logo/takin_logo.svg" alt="TUMO" className="h-8 mr-2" />
+            <img src="/logo/takin_logo.svg" alt="TUMO" className="h-8 w-8 mr-2" />
             <span className="font-semibold text-lg">TUMO</span>
           </Link>
 
