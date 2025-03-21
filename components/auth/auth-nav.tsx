@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { auth, signOut } from "@/auth";
+import { auth, signOut } from "@/lib/auth";
 
 export async function AuthNav() {
   const session = await auth();

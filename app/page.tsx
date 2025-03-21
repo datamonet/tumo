@@ -1,7 +1,7 @@
 import { ImagePlayground } from "@/components/image-playground";
 import { getRandomSuggestions } from "@/lib/suggestions";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
